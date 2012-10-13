@@ -27,5 +27,16 @@ int main(int argc, char** argv){
 	socklen_t socklen = sizeof(client_address);
 	int socket = accept(socket_fd, (sockaddr*)&client_address, &socklen);
 
+	while(true){
+		char buffer[1];
+		read(socket, buffer, 1);
+		cout << "Received:" << buffer[0] << endl;
+		write(socket, buffer, 1);
+		cout << "Sended:" << buffer[0] << endl;
+	}
+
+	close(socket);
+	close(socket_fd);
+
 	return 0;
 }
