@@ -24,6 +24,9 @@ int main(int argc, char** argv){
 	}
 	else{
 		std::cout << "connected" << std::endl;
+		int i=5;
+		asio::write(socket,asio::buffer(&i,sizeof(int)));
+		std::cout << i << std::endl;
 	}
 	return 0;
 }
